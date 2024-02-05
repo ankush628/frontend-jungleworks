@@ -1,0 +1,162 @@
+<app-navbar></app-navbar>
+
+<section class="vh-100" style="background-color: #f4f5f7">
+  <form
+    #f="ngForm"
+    [formGroup]="profileForm"
+    (ngSubmit)="saveProfile()"
+    class="mx-1 mx-md-4"
+  >
+    <div class="container h-100">
+      <div class="card" style="border-radius: 0.5rem">
+        <div class="row g-0">
+          <div
+            class="col-md-4 gradient-custom text-center text-white"
+            style="
+              border-top-left-radius: 0.5rem;
+              border-bottom-left-radius: 0.5rem;
+            "
+          >
+            <div class="text-light picMsg" *ngIf="editOn">
+              Click on Picture to upload new one
+            </div>
+            <input
+              type="file"
+              id="userImg"
+              class="form-control"
+              formControlName="userImg"
+              accept=".jpg,.jpeg,.png"
+              (change)="onFileSelected($event)"
+              hidden
+            />
+            <div
+              class="text-light errMsg"
+              *ngIf="profileForm.hasError('required', 'userImg') && !submitted"
+            >
+              Field is required!
+            </div>
+            <div
+              *ngIf="profileForm.errors?.['sizeExceeded']"
+              class="text-light errMsg"
+            >
+              Size of image cannot exceed 2 mb
+            </div>
+            <label for="userImg">
+              <img
+                src="{{ imageUrl }}"
+                alt="Avatar"
+                class="img-fluid my-5"
+                style="width: 250px"
+              />
+            </label>
+            <input
+              type="text"
+              id="name"
+              class="form-control nameInput"
+              formControlName="name"
+            />
+            <div
+              class="text-light"
+              *ngIf="profileForm.hasError('required', 'name')"
+            >
+              Field is required!
+            </div>
+            <div
+              class="text-light"
+              *ngIf="profileForm.hasError('pattern', 'name')"
+            >
+              Name should only contain alphabets!
+            </div>
+            <div *ngIf="profileForm.hasError('LengthError')" class="text-light">
+              Name must be between 3 to 20 characters
+            </div>
+            <button type="button" class="editBtn" (click)="editProfile()">
+              <i class="far fa-edit mb-5"></i>
+            </button>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body p-4">
+              <h2>Information</h2>
+              <hr class="mt-0 mb-4" />
+              <div class="row pt-1">
+                <div class="col-6 mb-3">
+                  <h4>Email:</h4>
+                  <input
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    formControlName="email"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="profileForm.hasError('required', 'email')"
+                  >
+                    Field is required!
+                  </div>
+                  <div
+                    class="text-danger"
+                    *ngIf="profileForm.hasError('pattern', 'email')"
+                  >
+                    Invalid Email!
+                  </div>
+                </div>
+                <div class="col-6 mb-3">
+                  <h4>Phone:</h4>
+                  <ngx-intl-tel-input
+                    [cssClass]="'custom'"
+                    [enablePlaceholder]="true"
+                    [searchCountryFlag]="true"
+                    [preferredCountries]="[
+                      CountryISO.UnitedStates,
+                      CountryISO.UnitedKingdom
+                    ]"
+                    [selectedCountryISO]="CountryISO.India"
+                    [separateDialCode]="true"
+                    [maxLength]="20"
+                    [phoneValidation]="true"
+                    name="phone"
+                    class="form-control"
+                    formControlName="phone"
+                  ></ngx-intl-tel-input>
+                  <div
+                    class="text-danger"
+                    *ngIf="profileForm.hasError('required', 'phone')"
+                  >
+                    Field is required!
+                  </div>
+                  <div
+                    *ngIf="profileForm.errors?.['phLength']"
+                    class="text-danger"
+                  >
+                    Check number of digits as per country code.
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-1">
+                <h4>Address:</h4>
+                <input
+                  type="text"
+                  id="address"
+                  class="form-control"
+                  formControlName="address"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="profileForm.hasError('required', 'address')"
+                >
+                  Field is required!
+                </div>
+              </div>
+            </div>
+            <a type="button" class="resetLink" (click)="resetPassword()"
+              >Reset Password</a
+            >
+            <button type="submit" class="btn btn-dark" *ngIf="editOn">
+              Edit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
