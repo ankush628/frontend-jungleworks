@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { DialogService } from 'src/app/services/dialog.service';
-import { apiResponseService } from 'src/app/services/apiResponse.service';
-import { environment } from 'src/app/environments/environment';
+import { DialogService } from 'src/app/shared/services/dialog.service';
+import { apiResponseService } from 'src/app/shared/services/apiResponse.service';
+import { environment } from 'src/app/shared/environments/environment';
 
 @Component({
   selector: 'app-login',

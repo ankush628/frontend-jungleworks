@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { LoginComponent } from "src/app/auth/components/login/login.component";
 import { SignupComponent } from "src/app/auth/components/signup/signup.component";
-import { EditUserComponent } from "../dashboard/components/show-users/edit-user/edit-user.component";
-import { ResetPasswordComponent } from "../dashboard/components/profile/reset-password/reset-password.component";
+import { EditUserComponent } from "../../dashboard/components/show-users/edit-user/edit-user.component";
+import { ResetPasswordComponent } from "../../dashboard/components/profile/reset-password/reset-password.component";
 
 @Injectable({
     providedIn: 'root'

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Spinkit } from 'ng-http-loader';
-import { environment } from 'src/app/environments/environment';
+import { environment } from 'src/app/shared/environments/environment';
 
 @Component({
   selector: 'app-navbar',

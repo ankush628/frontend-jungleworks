@@ -13,6 +13,7 @@ import { PasswordStrengthComponent } from './components/password-strength/passwo
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { ToastModule } from 'primeng/toast';
 import { HttpLoaderModule } from '../loader/http-loader/http-loader.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HttpLoaderModule } from '../loader/http-loader/http-loader.module';
   imports: [
     CommonModule,
     AuthRoutingModule,
+    SharedModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
@@ -31,7 +33,8 @@ import { HttpLoaderModule } from '../loader/http-loader/http-loader.module';
     InputNumberModule,
     NgxIntlTelInputModule,
     ToastModule,
-    HttpLoaderModule
+    HttpLoaderModule,
   ],
+  exports: [PasswordStrengthComponent],
 })
 export class AuthModule {}

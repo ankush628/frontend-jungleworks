@@ -25,31 +25,23 @@
                     style="width: 250px"
                   />
                 </label>
-                  <input
-                    type="file"
-                    id="userImg"
-                    accept=".jpg,.jpeg,.png"
-                    (change)="onFileSelected($event)"
-                    class="form-control"
-                    formControlName="userImg"
-                    hidden
-                  />
-                  <div
-                    *ngIf="
-                      editForm.hasError('required', 'userImg') && !submitted
-                    "
-                    class="text-danger errMsg3"
-                  >
-                    Field is required!
-                  </div>
-                  <div
-                    *ngIf="
+                <input
+                  type="file"
+                  id="userImg"
+                  accept=".jpg,.jpeg,.png"
+                  (change)="onFileSelected($event)"
+                  class="form-control"
+                  formControlName="userImg"
+                  hidden
+                />
+                <div
+                  *ngIf="
                       editForm.errors?.['sizeExceeded']
                       "
-                    class="text-danger errMsg3"
-                  >
-                    Size of image cannot exceed 2 mb!
-                  </div>
+                  class="text-danger errMsg3"
+                >
+                  Size of image cannot exceed 2 mb!
+                </div>
               </div>
 
               <div class="input-field">
@@ -63,18 +55,13 @@
                       formControlName="name"
                       placeholder="Name"
                     />
-                    <div
-                      *ngIf="editForm.hasError('required', 'name')"
+                    <app-error-message
                       class="text-danger errMsg2"
-                    >
-                      Field is required!
-                    </div>
-                    <div
-                      *ngIf="editForm.hasError('pattern', 'name')"
-                      class="text-danger errMsg2"
-                    >
-                      Name must be text only!
-                    </div>
+                      [control]="{
+                        type: 'name',
+                        error: editForm.get('name')?.errors || 'false'
+                      }"
+                    ></app-error-message>
                     <div
                       *ngIf="editForm.hasError('LengthError')"
                       class="text-danger errMsg"
@@ -105,12 +92,6 @@
                       formControlName="phone"
                     ></ngx-intl-tel-input>
                     <div
-                      *ngIf="editForm.hasError('required', 'phone')"
-                      class="text-danger errMsg2"
-                    >
-                      Field is required!
-                    </div>
-                    <div
                       *ngIf="editForm.hasError('phLength')"
                       class="text-danger errMsg"
                     >
@@ -131,21 +112,13 @@
                       formControlName="email"
                       placeholder="Email"
                     />
-                    <div
-                      *ngIf="editForm.hasError('required', 'email')"
-                      class="text-danger errMsg2"
-                    >
-                      Field is required!
-                    </div>
-                    <div
-                      *ngIf="
-                        editForm.hasError('pattern', 'email') &&
-                        editForm.controls['email'].dirty
-                      "
+                    <app-error-message
                       class="text-danger errMsg"
-                    >
-                      Invalid Email!
-                    </div>
+                      [control]="{
+                        type: 'email',
+                        error: editForm.get('email')?.errors || 'false'
+                      }"
+                    ></app-error-message>
                   </div>
                 </div>
               </div>
@@ -161,12 +134,13 @@
                       formControlName="address"
                       placeholder="Address"
                     />
-                    <div
-                      *ngIf="editForm.hasError('required', 'address')"
-                      class="text-danger errMsg2"
-                    >
-                      Field is required!
-                    </div>
+                    <app-error-message
+                      class="text-danger errMsg"
+                      [control]="{
+                        type: 'address',
+                        error: editForm.get('address')?.errors || 'false'
+                      }"
+                    ></app-error-message>
                   </div>
                 </div>
               </div>
@@ -181,7 +155,5 @@
         </div>
       </div>
     </div>
-    <!-- </div> -->
   </div>
 </div>
-<!-- </section> -->

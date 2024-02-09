@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DialogService } from 'src/app/services/dialog.service';
-import { DataService } from 'src/app/services/data.service';
+import { DialogService } from 'src/app/shared/services/dialog.service';
+import { DataService } from 'src/app/shared/services/data.service';
 import { Router } from '@angular/router';
-import { environment } from 'src/app/environments/environment';
-import { apiResponseService } from 'src/app/services/apiResponse.service';
+import { environment } from 'src/app/shared/environments/environment';
+import { apiResponseService } from 'src/app/shared/services/apiResponse.service';
 
 @Component({
   encapsulation: ViewEncapsulation.None,

@@ -3,15 +3,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {
   confirmPasswordValidator,
   nameValidator,
-} from '../../../validators/validator';
+} from '../../../shared/validators/validator';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DialogService } from 'src/app/services/dialog.service';
+import { DialogService } from 'src/app/shared/services/dialog.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { CountryISO } from 'ngx-intl-tel-input';
-import { environment } from 'src/app/environments/environment';
-import { apiResponseService } from 'src/app/services/apiResponse.service';
+import { environment } from 'src/app/shared/environments/environment';
+import { apiResponseService } from 'src/app/shared/services/apiResponse.service';
 
 @Injectable({
   providedIn: 'root',
@@ -45,7 +45,7 @@ export class SignupComponent implements OnInit {
     this.userForm = this.formBuilder.group(
       {
         name: ['', [Validators.required, Validators.pattern(/^[^\d]+$/)]],
-        phone: ['', Validators.required],
+        phone: ['', [Validators.required,Validators.minLength(6)]],
         email: [
           '',
           [
@@ -76,21 +76,6 @@ export class SignupComponent implements OnInit {
       }
     }
   }
-
-  // onFileChange(event: any){
-  //   if (event.target.files && event.target.files.length) {
-  //     const [file] = event.target.files;
-  //     console.log(file)
-  //     reader.readAsDataURL(file);
-  //     reader.onload = () => {
-  //       console.log(reader.result)
-  //       this.userForm.patchValue({
-  //         userImg : reader.result
-  //       });
-  //     };
-  //   }
-  // }
-
   closePopup() {
     const dialogRef = this.dialogService.getDialogRef();
     dialogRef.close();

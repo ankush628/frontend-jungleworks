@@ -30,12 +30,6 @@
               hidden
             />
             <div
-              class="text-light errMsg"
-              *ngIf="profileForm.hasError('required', 'userImg') && !submitted"
-            >
-              Field is required!
-            </div>
-            <div
               *ngIf="profileForm.errors?.['sizeExceeded']"
               class="text-light errMsg"
             >
@@ -55,18 +49,13 @@
               class="form-control nameInput"
               formControlName="name"
             />
-            <div
+            <app-error-message
               class="text-light"
-              *ngIf="profileForm.hasError('required', 'name')"
-            >
-              Field is required!
-            </div>
-            <div
-              class="text-light"
-              *ngIf="profileForm.hasError('pattern', 'name')"
-            >
-              Name should only contain alphabets!
-            </div>
+              [control]="{
+                type: 'name',
+                error: profileForm.get('name')?.errors || 'false'
+              }"
+            ></app-error-message>
             <div *ngIf="profileForm.hasError('LengthError')" class="text-light">
               Name must be between 3 to 20 characters
             </div>
@@ -87,18 +76,13 @@
                     class="form-control"
                     formControlName="email"
                   />
-                  <div
+                  <app-error-message
                     class="text-danger"
-                    *ngIf="profileForm.hasError('required', 'email')"
-                  >
-                    Field is required!
-                  </div>
-                  <div
-                    class="text-danger"
-                    *ngIf="profileForm.hasError('pattern', 'email')"
-                  >
-                    Invalid Email!
-                  </div>
+                    [control]="{
+                      type: 'email',
+                      error: profileForm.get('email')?.errors || 'false'
+                    }"
+                  ></app-error-message>
                 </div>
                 <div class="col-6 mb-3">
                   <h4>Phone:</h4>
@@ -118,12 +102,7 @@
                     class="form-control"
                     formControlName="phone"
                   ></ngx-intl-tel-input>
-                  <div
-                    class="text-danger"
-                    *ngIf="profileForm.hasError('required', 'phone')"
-                  >
-                    Field is required!
-                  </div>
+
                   <div
                     *ngIf="profileForm.errors?.['phLength']"
                     class="text-danger"
@@ -140,12 +119,13 @@
                   class="form-control"
                   formControlName="address"
                 />
-                <div
+                <app-error-message
                   class="text-danger"
-                  *ngIf="profileForm.hasError('required', 'address')"
-                >
-                  Field is required!
-                </div>
+                  [control]="{
+                    type: 'address',
+                    error: profileForm.get('address')?.errors || 'false'
+                  }"
+                ></app-error-message>
               </div>
             </div>
             <a type="button" class="resetLink" (click)="resetPassword()"

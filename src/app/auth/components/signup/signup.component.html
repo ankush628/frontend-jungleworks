@@ -25,21 +25,7 @@
                     formControlName="name"
                     placeholder="Name"
                   />
-                  <div
-                    *ngIf="userForm.hasError('required', 'name') && !submitted"
-                    class="text-danger errMsg2"
-                  >
-                    Field is required
-                  </div>
-                  <div
-                    *ngIf="
-                      userForm.hasError('pattern', 'name') &&
-                      userForm.controls['name'].dirty
-                    "
-                    class="text-danger errMsg2"
-                  >
-                    Name must be text only!
-                  </div>
+
                   <div
                     *ngIf="
                       userForm.hasError('LengthError') &&
@@ -49,6 +35,14 @@
                   >
                     Name between 3-20 characters!
                   </div>
+                  <app-error-message
+                    class="text-danger errMsg2"
+                    *ngIf="userForm.controls['name'].dirty || !submitted"
+                    [control]="{
+                      type: 'name',
+                      error: userForm.get('name')?.errors || 'false'
+                    }"
+                  ></app-error-message>
                 </div>
               </div>
             </div>
@@ -76,7 +70,7 @@
                     *ngIf="userForm.errors?.['phLength']"
                     class="text-danger errMsg"
                   >
-                  Check number of digits as per country code!
+                    Check number of digits as per country code!
                   </div>
                 </div>
               </div>
@@ -93,21 +87,15 @@
                     formControlName="email"
                     placeholder="Email"
                   />
-                  <div
-                    *ngIf="userForm.hasError('required', 'email') && !submitted"
+
+                  <app-error-message
                     class="text-danger errMsg2"
-                  >
-                    Field is required
-                  </div>
-                  <div
-                    *ngIf="
-                      userForm.hasError('pattern', 'email') &&
-                      userForm.controls['email'].dirty
-                    "
-                    class="text-danger errMsg"
-                  >
-                    Invalid Email!
-                  </div>
+                    *ngIf="userForm.controls['email'].dirty || !submitted"
+                    [control]="{
+                      type: 'email',
+                      error: userForm.get('email')?.errors || 'false'
+                    }"
+                  ></app-error-message>
 
                   <div
                     class="text-danger errMsg"
@@ -130,14 +118,14 @@
                     formControlName="password"
                     placeholder="Password"
                   />
-                  <div
-                    *ngIf="
-                      userForm.hasError('required', 'password') && !submitted
-                    "
+                  <app-error-message
                     class="text-danger errMsg2"
-                  >
-                    Field is required
-                  </div>
+                    *ngIf="userForm.controls['password'].dirty || !submitted"
+                    [control]="{
+                      type: 'password',
+                      error: userForm.get('password')?.errors || 'false'
+                    }"
+                  ></app-error-message>
                   <div
                     class="text-danger errMsg"
                     *ngIf="userForm.errors?.['weakPass']"
@@ -164,20 +152,21 @@
                     placeholder="Repeat Password"
                   />
 
-                  <div
-                    *ngIf="
-                      userForm.hasError('required', 'repeatPassword') &&
-                      !submitted
-                    "
+                  <app-error-message
                     class="text-danger errMsg2"
-                  >
-                    Field is required
-                  </div>
+                    *ngIf="
+                      userForm.controls['repeatPassword'].dirty || !submitted
+                    "
+                    [control]="{
+                      type: 'password',
+                      error: userForm.get('repeatPassword')?.errors || 'false'
+                    }"
+                  ></app-error-message>
                   <div
                     class="text-danger errMsg"
                     *ngIf="userForm.errors?.['PasswordNoMatch'] && userForm.controls['repeatPassword'].dirty"
                   >
-                    Passwords did not match!!
+                    Passwords did not match!
                   </div>
                 </div>
               </div>
@@ -205,14 +194,14 @@
                   >
                     Size of image cannot exceed 2 mb
                   </div>
-                  <div
-                    *ngIf="
-                      userForm.hasError('required', 'userImg') && !submitted
-                    "
+                  <app-error-message
                     class="text-danger errMsg2"
-                  >
-                    Field is required
-                  </div>
+                    *ngIf="!submitted"
+                    [control]="{
+                      type: 'image',
+                      error: userForm.get('userImg')?.errors || 'false'
+                    }"
+                  ></app-error-message>
                 </div>
               </div>
             </div>
@@ -228,14 +217,14 @@
                     formControlName="address"
                     placeholder="Address"
                   />
-                  <div
-                    *ngIf="
-                      userForm.hasError('required', 'address') && !submitted
-                    "
+                  <app-error-message
                     class="text-danger errMsg2"
-                  >
-                    Field is required
-                  </div>
+                    *ngIf="userForm.controls['address'].dirty || !submitted"
+                    [control]="{
+                      type: 'address',
+                      error: userForm.get('address')?.errors || 'false'
+                    }"
+                  ></app-error-message>
                 </div>
               </div>
             </div>
