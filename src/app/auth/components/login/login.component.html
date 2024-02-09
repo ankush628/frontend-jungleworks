@@ -28,27 +28,14 @@
                   />
                 </div>
               </div>
-              <div
-                *ngIf="userForm.hasError('required', 'email') && !submitted"
+              <app-error-message
                 class="text-danger errMsg"
-              >
-                Email is required
-              </div>
-              <div
-                *ngIf="
-                  userForm.hasError('pattern', 'email') &&
-                  userForm.controls['email'].dirty
-                "
-                class="text-danger errMsg"
-              >
-                Invalid Email!
-              </div>
-              <div
-                class="text-danger errMsg"
-                *ngIf="userForm.errors?.['notRegistered']"
-              >
-                Email not registered!
-              </div>
+                *ngIf="userForm.controls['email'].dirty || !submitted"
+                [control]="{
+                  type: 'email',
+                  error: userForm.get('email')?.errors || 'false'
+                }"
+              ></app-error-message>
             </div>
 
             <div class="input-field">
@@ -64,18 +51,14 @@
                   />
                 </div>
               </div>
-              <div
-                *ngIf="userForm.hasError('required', 'password') && !submitted"
+              <app-error-message
                 class="text-danger errMsg"
-              >
-                Password is required
-              </div>
-              <div
-                class="text-danger errMsg"
-                *ngIf="userForm.errors?.['incorrectPassword']"
-              >
-                Incorrect Password!
-              </div>
+                *ngIf="userForm.controls['password'].dirty || !submitted"
+                [control]="{
+                  type: 'password',
+                  error: userForm.get('password')?.errors || 'false'
+                }"
+              ></app-error-message>
             </div>
 
             <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">

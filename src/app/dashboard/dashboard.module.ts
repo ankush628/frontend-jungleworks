@@ -17,7 +17,7 @@ import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { ResetPasswordComponent } from './components/profile/reset-password/reset-password.component';
 import { ToastModule } from 'primeng/toast';
 import { PaginatorModule } from 'primeng/paginator';
-import { HttpLoaderModule } from '../loader/http-loader/http-loader.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { HttpLoaderModule } from '../loader/http-loader/http-loader.module';
     NgxIntlTelInputModule,
     ToastModule,
     PaginatorModule,
-    HttpLoaderModule
+    SharedModule,
   ],
 })
 export class DashboardModule {}

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { nameValidator } from 'src/app/validators/validator';
-import { DialogService } from 'src/app/services/dialog.service';
-import { DataService } from 'src/app/services/data.service';
+import { nameValidator } from 'src/app/shared/validators/validator';
+import { DialogService } from 'src/app/shared/services/dialog.service';
+import { DataService } from 'src/app/shared/services/data.service';
 import { Router } from '@angular/router';
 import { CountryISO } from 'ngx-intl-tel-input';
-import { environment } from 'src/app/environments/environment';
-import { apiResponseService } from 'src/app/services/apiResponse.service';
+import { environment } from 'src/app/shared/environments/environment';
+import { apiResponseService } from 'src/app/shared/services/apiResponse.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -43,7 +43,7 @@ export class EditUserComponent implements OnInit {
           ],
         ],
         address: ['', Validators.required],
-        userImg: ['', Validators.required],
+        userImg: [''],
       },
       { validators: nameValidator }
     );

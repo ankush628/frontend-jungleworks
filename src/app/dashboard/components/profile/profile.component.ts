@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { nameValidator } from 'src/app/validators/validator';
+import { nameValidator } from 'src/app/shared/validators/validator';
 import { CountryISO } from 'ngx-intl-tel-input';
-import { DataService } from 'src/app/services/data.service';
-import { DialogService } from 'src/app/services/dialog.service';
+import { DataService } from 'src/app/shared/services/data.service';
+import { DialogService } from 'src/app/shared/services/dialog.service';
 import { Router } from '@angular/router';
-import { environment } from 'src/app/environments/environment';
-import { apiResponseService } from 'src/app/services/apiResponse.service';
+import { environment } from 'src/app/shared/environments/environment';
+import { apiResponseService } from 'src/app/shared/services/apiResponse.service';
 
 @Component({
   selector: 'app-profile',
@@ -48,7 +48,7 @@ export class ProfileComponent implements OnInit {
           ],
         ],
         address: ['', Validators.required],
-        userImg: ['', Validators.required],
+        userImg: [''],
       },
       { validators: nameValidator }
     );

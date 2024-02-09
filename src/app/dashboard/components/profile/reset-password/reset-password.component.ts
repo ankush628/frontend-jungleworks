@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DialogService } from 'src/app/services/dialog.service';
-import { DataService } from 'src/app/services/data.service';
+import { DialogService } from 'src/app/shared/services/dialog.service';
+import { DataService } from 'src/app/shared/services/data.service';
 import { Spinkit } from 'ng-http-loader';
-import { environment } from 'src/app/environments/environment';
-import { apiResponseService } from 'src/app/services/apiResponse.service';
+import { environment } from 'src/app/shared/environments/environment';
+import { apiResponseService } from 'src/app/shared/services/apiResponse.service';
 
 @Component({
   selector: 'app-reset-password',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { DialogService } from '../../services/dialog.service';
+import { DialogService } from '../../shared/services/dialog.service';
 
 @Component({
   selector: 'app-home',
