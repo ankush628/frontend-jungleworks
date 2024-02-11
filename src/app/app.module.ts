@@ -20,7 +20,6 @@ import { CustomLoaderComponent } from './loader/custom-loader/custom-loader.comp
 import { LoadingInterceptor } from './loading.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
     AppComponent,
